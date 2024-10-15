@@ -51,7 +51,7 @@ namespace Rekrutacja.Workers.Template
 
         [Action("Figury",
            Description = "Prosty kalkulator do obliczania pola figury ",
-           Priority = 10,
+           Priority = 20,
            Mode = ActionMode.ReadOnlySession,
            Icon = ActionIcon.Accept,
            Target = ActionTarget.ToolbarWithText)]
