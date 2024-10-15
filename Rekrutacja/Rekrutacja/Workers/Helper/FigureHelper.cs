@@ -1,4 +1,6 @@
-﻿using Rekrutacja.Workers.Enums;
+﻿using Rekrutacja.Extensions;
+using Rekrutacja.Workers.Enums;
+using System;
 
 namespace Rekrutacja.Workers.Helper
 {
@@ -6,6 +8,12 @@ namespace Rekrutacja.Workers.Helper
     {
         public static int Calculate(FigureEnum figure, double number1, double number2)
         {
+            if (number1.IsNegativeOrZero() || number1.IsNegativeOrZero())
+                throw new ArgumentOutOfRangeException("Długość: A, B", "Wymiary figury muszą być dodatnie");
+
+            if (figure == FigureEnum.Square && number1 != number2)
+                throw new ArgumentException("Dla kwadratu obie długości muszą być równe", "Długość: A, B");
+
             int result = 0;
 
             switch (figure)
@@ -21,6 +29,9 @@ namespace Rekrutacja.Workers.Helper
                 case FigureEnum.Circle:
                     result = (int)(System.Math.PI * System.Math.Pow(number1, 2));
                     break;
+
+                default:
+                    throw new ArgumentException($"Nie znaleziono figury: {figure}", nameof(figure));
             }
 
             return result;

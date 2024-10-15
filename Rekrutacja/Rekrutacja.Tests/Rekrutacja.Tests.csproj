@@ -3,4 +3,7 @@
   <PropertyGroup>
     <TargetFramework>$(SonetaTargetFramework)</TargetFramework>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Rekrutacja\Rekrutacja.csproj" />
+  </ItemGroup>
 </Project>
