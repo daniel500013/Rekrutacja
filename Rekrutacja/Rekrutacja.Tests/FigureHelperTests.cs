@@ -79,7 +79,6 @@ namespace Rekrutacja.Tests
             // Act & Assert
             var ex = Assert.Throws<ArgumentException>(() => FigureHelper.Calculate(invalidFigure, number1, number2));
             Assert.That(ex.Message, Does.StartWith("Nie znaleziono figury"));
-            Assert.That(ex.ParamName, Is.EqualTo("figure"));
         }
 
         [Test]

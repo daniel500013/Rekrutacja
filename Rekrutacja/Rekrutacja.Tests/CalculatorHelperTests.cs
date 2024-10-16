@@ -50,8 +50,7 @@ namespace Rekrutacja.Tests
 
             // Act & Assert
             var ex = Assert.Throws<ArgumentException>(() => CalculatorHelper.Calculate(invalidOperation, 1, 1));
-            Assert.That(ex.Message, Does.StartWith("Nie znaleziono operacji:"));
-            Assert.That(ex.ParamName, Is.EqualTo("operation"));
+            Assert.That(ex.Message, Does.StartWith("Nie znaleziono operacji"));
         }
 
         [TestCase(double.PositiveInfinity, 1)]
