@@ -62,7 +62,7 @@ namespace Rekrutacja.Workers.Template
             if (Parametry.VariableA.ContainsNonNumeric() || Parametry.VariableB.ContainsNonNumeric())
                 return new MessageBoxInformation("Błąd") { Text = "W pola muszą być wpisane liczby a nie znaki" };
 
-            if (Parametry.Operation == OperationEnum.Division && StringToInt(Parametry.VariableB) == 0)
+            if (Parametry.Operation == OperationEnum.Division && ParserHelper.StringToInt(Parametry.VariableB) == 0)
                 return new MessageBoxInformation("Błąd") { Text = "Nie da się dzielić przez 0" };
 
             DebuggerSession.MarkLineAsBreakPoint();
@@ -76,7 +76,7 @@ namespace Rekrutacja.Workers.Template
                 return new MessageBoxInformation("Błąd") { Text = "Nie ma takiego operatora" };
 
             double result =
-                CalculatorHelper.Calculate(Parametry.Operation, StringToInt(Parametry.VariableA), StringToInt(Parametry.VariableB));
+                CalculatorHelper.Calculate(Parametry.Operation, ParserHelper.StringToInt(Parametry.VariableA), ParserHelper.StringToInt(Parametry.VariableB));
 
             using (Session nowaSesja = this.Cx.Login.CreateSession(false, false, "ModyfikacjaPracownika"))
             {
@@ -97,37 +97,6 @@ namespace Rekrutacja.Workers.Template
             }
 
             return null;
-        }
-
-        public int StringToInt(string str)
-        {
-            bool isNegative = false;
-
-            if (str.StartsWith("-"))
-            {
-                isNegative = true;
-                str = str.Substring(1);
-            }
-
-            int answer = 0;
-            int factor = 1;
-
-            for (int i = str.Length - 1; i >= 0; i--)
-            {
-                char c = str[i];
-
-                int value = c - '0';
-                answer += value * factor;
-
-                factor *= 10;
-            }
-
-            if (isNegative)
-            {
-                answer *= -1;
-            }
-
-            return answer;
         }
     }
 }
