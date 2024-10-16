@@ -67,12 +67,7 @@ namespace Rekrutacja.Workers.Template
 
             DebuggerSession.MarkLineAsBreakPoint();
 
-            Pracownik[] pracownicy = null;
-
-            if (this.Cx.Contains(typeof(Pracownik[])))
-            {
-                pracownicy = (Pracownik[])this.Cx[typeof(Pracownik[])];
-            }
+            Pracownik[] pracownicy = this.Cx[typeof(Pracownik[])] as Pracownik[];
 
             if (pracownicy.IsEmptyOrNull())
                 return new MessageBoxInformation("Błąd") { Text = "Nie wybrano pracownika" };
