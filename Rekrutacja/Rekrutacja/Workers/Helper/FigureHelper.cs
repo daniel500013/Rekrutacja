@@ -31,7 +31,7 @@ namespace Rekrutacja.Workers.Helper
                     break;
 
                 default:
-                    throw new ArgumentException($"Nie znaleziono figury: {figure}", nameof(figure));
+                    throw new ArgumentException($"Nie znaleziono figury");
             }
 
             return result;

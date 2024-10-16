@@ -57,6 +57,8 @@ namespace Rekrutacja.Workers.Template
            Target = ActionTarget.ToolbarWithText)]
         public dynamic WykonajAkcje()
         {
+            //Większość z tych komunikatów informacyjnych (MessageBoxInformation) można usunąć, ponieważ te przypadki są już obsługiwane przez helpery. Jednak zostawiam je, ponieważ komunikaty te lepiej prezentują się w UI
+
             if (Parametry.Operation == OperationEnum.Division && Parametry.VariableB == 0)
                 return new MessageBoxInformation("Błąd") { Text = "Nie da się dzielić przez 0" };
 

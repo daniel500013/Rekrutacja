@@ -57,6 +57,8 @@ namespace Rekrutacja.Workers.Template
            Target = ActionTarget.ToolbarWithText)]
         public dynamic WykonajAkcje()
         {
+            //Większość z tych komunikatów informacyjnych (MessageBoxInformation) można usunąć, ponieważ te przypadki są już obsługiwane przez helpery. Jednak zostawiam je, ponieważ komunikaty te lepiej prezentują się w UI
+
             DebuggerSession.MarkLineAsBreakPoint();
 
             Pracownik[] pracownicy = this.Cx[typeof(Pracownik[])] as Pracownik[];

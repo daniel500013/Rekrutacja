@@ -33,7 +33,7 @@ namespace Rekrutacja.Workers.Helper
                     break;
 
                 default:
-                    throw new ArgumentException($"Nie znaleziono operacji: {operation}", nameof(operation));
+                    throw new ArgumentException($"Nie znaleziono operacji");
             }
 
             return result;

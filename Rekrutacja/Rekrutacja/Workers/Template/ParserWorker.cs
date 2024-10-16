@@ -58,6 +58,8 @@ namespace Rekrutacja.Workers.Template
            Target = ActionTarget.ToolbarWithText)]
         public dynamic WykonajAkcje()
         {
+            //Większość z tych komunikatów informacyjnych (MessageBoxInformation) można usunąć, ponieważ te przypadki są już obsługiwane przez helpery. Jednak zostawiam je, ponieważ komunikaty te lepiej prezentują się w UI
+
             //ContainsNonNumeric to moja własna funkcja która znajduje się w Extensions > StringExtensions
             if (Parametry.VariableA.ContainsNonNumeric() || Parametry.VariableB.ContainsNonNumeric())
                 return new MessageBoxInformation("Błąd") { Text = "W pola muszą być wpisane liczby a nie znaki" };
